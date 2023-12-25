@@ -8,8 +8,16 @@ html {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-}
+	font-family: Montserrat,'Open Sans',sans-serif;
 
+}
+dialog{
+	top:50%;
+	left:50%;
+	transform: translate(-50%,-50%);
+	width: 50vw;
+	height: 50vh
+}
 body {
 	display: flex;
 	/* justify-content: center; */
@@ -29,7 +37,7 @@ nav button{
 	height: 40px;
 	border-radius: 6px;
 	border: 1px white solid;
-	background: #303030;
+	background: #242729;
 	transition: 600ms;
 }
 nav button:hover{
@@ -51,7 +59,7 @@ nav button:hover{
 .grid .col {
 	/* height: 100px; */
 	/* width: 100px; */
-	background-color: #303030;
+	background-color: #242729;
 	 border-radius: 5px;
 	 border: 1px white solid;
 	display: flex;
@@ -72,19 +80,44 @@ nav button:hover{
 .keyboard .key{
 	 /* height: 100px; */
 	 /* width: 100px; */
-	 background-color: #303030;
+	 background-color: #242729;
 	 border-radius: 5px;
-	 border: 1px white solid;
+	/* border-width: 2px; */
+	/* border-style: outset;*/
+	/* border-color: #242729 ; */
+		/* white #242729 white;  */
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	font-size: clamp(6px,10vw,24px);
-	font-family: Montserrat,'Open Sans',sans-serif
+	transition: 200ms;
+
 }
+.keyboard .key:active{
+	scale:0.9
+}
+@media (pointer:none), (pointer:coarse) {
+	.keyboard .key:hover{
+		scale:1
+	}
+}
+.keyboard .key:hover{
+	scale:0.9
+}
+
 
 .cancle{
 	grid-area: 3 / 1 / 4 / 3;
+	font-size: clamp(18px,15vw,38px);
+	
+}
+.cancle svg{
+	height:30px;
+	width: 30px;
+	fill:#ffffff
 }
 .enter{
 	grid-area: 3 / -1 / 4 / -3;
+	font-size: clamp(18px,15vw,38px) !important;
+
 }
