@@ -5,21 +5,38 @@ let line = 1
 let lineval = ""
 let lineend = false
 let word = ""
-let dlog = document.querySelector(".endscreen")
+let dlog = document.querySelector(".endscreen");
+let dlog2 = document.querySelector(".errscreen");
 
-
-window.onload = () => {
-	run()
-}
-document.querySelector(".new-up").onclick = () => {
-	dlog.querySelector("h2 span").innerHTML = word
+function showModal(){
+	dlog.style.display = "grid"
 	dlog.showModal()
-}
 
-document.querySelector(".new").onclick = () => {
-	dlog.close()
-	location.reload()
-}
+	}
+function showhide(data){
+	dlog2.showModal()
+	dlog2.querySelector("h1").innerHTML = data;
+	dlog2.style.display = "grid";
+	setTimeout(()=>{dlog.close();dlog2.style.display = "none"},1000)
+
+	}
+	run()
+	document.querySelector(".new-up").onclick = () => {
+		dlog.querySelector(".answer").innerHTML = word
+		showModal()
+	}
+	document.querySelector(".save").onclick = () => {
+		showhide("saving")
+	}
+	document.querySelector(".closes").onclick = () => {
+		dlog.style.display = "none"
+
+		dlog.close()
+	}
+	document.querySelector(".new").onclick = () => {
+		dlog.close()
+		location.reload()
+	}
 
 function run(){
 	document.querySelector(".grid .col:nth-child(" + (cursor + 1) + ")").style.borderColor = "green"
@@ -31,7 +48,7 @@ function run(){
 		console.log(e.key)
 		if (val == "Enter") {
 			if (!lineend) {
-				alert("too small bro")
+				showhide("too small bro")
 				return 0
 			}
 			worker.postMessage({ word: lineval.toLowerCase(), type: "find" });
@@ -75,7 +92,7 @@ function run(){
 			let val = el.dataset.key
 			if (val == "↵") {
 				if (!lineend) {
-					alert("too small bro")
+					showhide("too small bro")
 					return 0
 				}
 				worker.postMessage({ word: lineval.toLowerCase(), type: "find" });
@@ -197,9 +214,8 @@ function run(){
 					}
 				}
 				if (lineval == word) {
-					dlog.querySelector("h1").innerHTML = `you win hehe`
-					dlog.querySelector("p").innerHTML = `- hasan`
-					dlog.querySelector("h2 span").innerHTML = word
+					dlog.querySelector("top h1").innerHTML = `you win hehe`
+					dlog.querySelector(".answer").innerHTML = word
 					anime({
 						targets: ellist,
 						duration: 1000,
@@ -210,27 +226,26 @@ function run(){
 						easing: 'easeInOutSine',
 						delay: anime.stagger(100),
 						complete: function(anim) {
-							
-							dlog.showModal()
+
+							showModal()
 						  }
 					})
 					return 0
 				}
 				else if(line == 6){
-					// alert("you lose")
-					dlog.querySelector("h2 span").innerHTML = word
-					dlog.showModal()
+			
+					dlog.querySelector(".answer").innerHTML = word
+					showModal()
 					return 0
-					
+
 				}
 				cursormin += 5
 				lineval = ""
 				line += 1
 				lineend = false
 				document.querySelector(".grid .col:nth-child(" + (cursor + 1) + ")").style.borderColor = "green"
-				// alert("exists")
 			} else {
-				alert("word not found")
+				showhide("word not found")
 			}
 		} else {
 			word = e.data.val
