@@ -4,11 +4,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>replit</title>
+  <title>Wordle</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
 	<script src="
 	https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js
 	"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -17,11 +20,29 @@
 		<button class="save">save</button>
 
 	</nav>
-	<dialog class="endscreen" >
-		<h1>you lost hehe </h1>
-		<p>-josh atusania</p>
-		<h2>answer was <span></span></h2>
-		<button class="new">new game</button>
+	<dialog class="endscreen">
+		<div class="top">
+		<h1 >you lost hehe </h1>
+			<div></div>
+		<button class="closes" style="z-index: 1;background-color: #00000000;border: 1px #00000000 solid;border-radius: 12px;
+">X</button>
+		</div>
+		<div class="ans">
+		<h1>The Word is: </h1>
+		<div class="answer"></div>
+		</div>
+		<div class="mid">
+			<button class="new">new game</button>
+			<button class="new">share it</button>
+		</div>
+		<div class="bottom">
+		<p>Made by Hsn Bro Coder</p>
+			</div>
+	</dialog>
+	<dialog class="errscreen">
+		<h1></h1>
+		<button onclick="document.querySelector(`.errscreen`).close()" style="z-index: 1;background-color: #00000000;border: 1px #00000000 solid;border-radius: 12px;
+		">X</button>
 	</dialog>
 	<div class="grid">
 		<div class="col"></div>
