@@ -1,14 +1,20 @@
+@font-face {
+	font-family: Montserrat;
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+	src: url('./font.ttf');
+}
 html {
 	height: 100%;
 	width: 100%;
 	color-scheme: dark;
 }
-
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: Montserrat,'Open Sans',sans-serif !important;
+	font-family: 'Montserrat','Open Sans',sans-serif !important;
 
 }
 .endscreen {
@@ -34,7 +40,8 @@ html {
 	overflow: visible;
 	border: 1px gray solid;
 	border-radius: 12px;
-	grid-template-columns: 4fr 1fr;
+	grid-template-columns: 6fr 1fr;
+	padding: 20px;
 	grid-template-rows: 1fr ;
 	top:50%;
 	left:50%;
@@ -42,6 +49,11 @@ html {
 	width: clamp(200px,50vw,550px);
 	height: 100px;
 	/* gap: 3vw; */
+}
+.errscreen h1{
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .endscreen::backdrop {
   background-color: #1C2333;
@@ -70,13 +82,20 @@ html {
 	align-items: center;
 	font-size: 18px;
 	background-color: #3b3b3b00;
-	
+
 }
 .endscreen .mid{
+	margin-top: 30px;
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
 	gap:20px;
+}
+.endscreen .bottom{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* gap:20px; */
 }
 .endscreen .mid button{
 	color: #fff;
